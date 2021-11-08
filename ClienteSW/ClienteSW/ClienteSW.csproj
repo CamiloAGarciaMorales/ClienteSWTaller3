@@ -85,6 +85,7 @@
     <Content Include="GUICrearJugador.aspx" />
     <Content Include="GUIEliminarPersonaje.aspx" />
     <Content Include="GUIListarJugadores.aspx" />
+    <Content Include="GUIGrafica.aspx" />
     <Content Include="GUIPrincipal.aspx" />
     <Content Include="GUIListarPersonajes.aspx" />
     <Content Include="Web.config" />
@@ -136,6 +137,13 @@
     </Compile>
     <Compile Include="GUIListarJugadores.aspx.designer.cs">
       <DependentUpon>GUIListarJugadores.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GUIGrafica.aspx.cs">
+      <DependentUpon>GUIGrafica.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GUIGrafica.aspx.designer.cs">
+      <DependentUpon>GUIGrafica.aspx</DependentUpon>
     </Compile>
     <Compile Include="GUIPrincipal.aspx.cs">
       <DependentUpon>GUIPrincipal.aspx</DependentUpon>

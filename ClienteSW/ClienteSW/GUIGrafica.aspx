@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="GUIPrincipal.aspx.cs" Inherits="ClienteSW.GUIPrincipal" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="GUIGrafica.aspx.cs" Inherits="ClienteSW.GUIGrafica" %>
 
 <!doctype html>
 <html lang="en">
@@ -12,12 +12,56 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 
     <title>Menu Principal</title>
+      <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true">
+        </asp:ScriptManager>
+       <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+        // Load the Visualization API and the corechart package.
+        google.charts.load('current', { 'packages': ['corechart'] });
+
+        // Set a callback to run when the Google Visualization API is loaded.
+        google.charts.setOnLoadCallback(drawChart);
+
+        // Callback that creates and populates a data table,
+        // instantiates the pie chart, passes in the data and
+        // draws it.
+        function drawChart() {
+
+            // Create the data table.
+            var data = new google.visualization.DataTable();
+            var jugador = <%=darCantidadJugadores()%>+0;
+            var personajes = <%=darCantidadPersonajes()%>+0;
+            var especies = <%=darCantidadEspecies()%>+0;
+            /*
+             * 
+             * [['Tipo','Cantidad'],['Jugadores',13],['Personajes',8],['Especies',7]]
+             * */
+            data.addColumn('string', 'Tipo');
+            data.addColumn('number', 'Cantidad');
+            data.addRows([
+                ['Jugadores', jugador], ['Personajes',personajes], ['Especies',especies]
+            ]);
+            
+            // Set chart options
+            var options = {
+                'title': 'Numero de Jugadores, Personajes y Especies',
+                'width': 800,
+                'height': 600
+            };
+
+            // Instantiate and draw our chart, passing in some options.
+            var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+        }
+    </script>
   </head>
   <body>
       <!-- Codigo menu barra -->
    <nav class="navbar navbar-expand-md navbar-dark bg-dark" aria-label="Fourth navbar example">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#" OnClick="Principal">Menu Principal</a>
+      <a class="navbar-brand" href="#">Menu Principal</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -63,13 +107,11 @@
     </div>
   </nav>
       <!-- Contenido de la pagina -->
-      <main class="container">
-  <div class="container-fluid">
-      <div class="col-md-10">
-          <img src="https://pbs.twimg.com/media/EGDlgbGXYAEE7Q4.jpg" class="" alt="" />
+      <main class="container" >
+ 
+      <div id="chart_div"  style="width:650px; margin:0 auto;">
       </div>
-    
-  </div>
+   
 </main>
 
 

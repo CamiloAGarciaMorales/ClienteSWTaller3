@@ -94,11 +94,15 @@ namespace ClienteSW
 
         protected void LbtnirGraficar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("GUIEliminarJugador.aspx");
+            Response.Redirect("GUIGrafica.aspx");
         }
         protected void LbtnGraficarP_Click(object sender, EventArgs e)
         {
             Response.Redirect("GUIListarPersonajes.aspx");
+        }
+        protected void Principal(object sender, EventArgs e)
+        {
+            Response.Redirect("GUIPrincipal.aspx");
         }
         protected void btnCrear_Click(object sender, EventArgs e)
         {
